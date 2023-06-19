@@ -1,5 +1,6 @@
 package com.example.boat;
 
+import com.example.boat.entity.LoginRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class AuthControllerTest {
 
     @Test
     public void whenValidInputThenReturns200() throws Exception {
-        AuthController.LoginRequest loginRequest = new AuthController.LoginRequest();
+        LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername("Anna");
         loginRequest.setPassword("save-password");
 
@@ -38,7 +39,7 @@ public class AuthControllerTest {
 
     @Test
     public void whenInvalidInputThenReturns404() throws Exception {
-        AuthController.LoginRequest loginRequest = new AuthController.LoginRequest();
+        LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername("InvalidUsername");
         loginRequest.setPassword("InvalidPassword");
 
@@ -51,7 +52,7 @@ public class AuthControllerTest {
 
     @Test
     public void whenNoUsernameThenReturns400() throws Exception {
-        AuthController.LoginRequest loginRequest = new AuthController.LoginRequest();
+        LoginRequest loginRequest = new LoginRequest();
         loginRequest.setPassword("save-password");
 
         mockMvc.perform(post("/api/login")
