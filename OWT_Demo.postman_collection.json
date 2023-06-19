@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "484bbb03-cfb7-453a-a2e1-a581cb485fde",
+		"name": "OWT Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10336154",
+		"_collection_link": "https://stockalizer.postman.co/workspace/ZUKH-Team-Workspace~ef7800dc-94bc-4b9a-83ee-beb075abf57d/collection/10336154-484bbb03-cfb7-453a-a2e1-a581cb485fde?action=share&creator=10336154&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Carla\",\n    \"password\": \"918\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://boat-service.azurewebsites.net/api/login",
+					"protocol": "https",
+					"host": [
+						"boat-service",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Boats",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://boat-service.azurewebsites.net/api/boats",
+					"protocol": "https",
+					"host": [
+						"boat-service",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Boat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://boat-service.azurewebsites.net/api/boats/1",
+					"protocol": "https",
+					"host": [
+						"boat-service",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"boats",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Boat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Test Boat\",\n    \"description\": \"Test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://boat-service.azurewebsites.net/api/boats",
+					"protocol": "https",
+					"host": [
+						"boat-service",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Boat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"New Boat\",\n    \"description\": \"Wonderful description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://boat-service.azurewebsites.net/api/boats/1",
+					"protocol": "https",
+					"host": [
+						"boat-service",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"boats",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Boat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://boat-service.azurewebsites.net/api/boats/1",
+					"protocol": "https",
+					"host": [
+						"boat-service",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"boats",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
