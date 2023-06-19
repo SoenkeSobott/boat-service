@@ -21,11 +21,9 @@ public class User {
         return password;
     }
 
-    // getters and setters
     public void setPassword(String password) {
         this.password = password;
     }
-
 
 }
 
