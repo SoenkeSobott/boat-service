@@ -1,7 +1,7 @@
 package com.example.boat;
 
 import com.example.boat.entity.Boat;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,45 +12,42 @@ import java.util.List;
 @RequestMapping("/api/boats")
 public class BoatController {
 
-    private final BoatRepository repository;
+    private final BoatService service;
 
-    public BoatController(BoatRepository repository) {
-        this.repository = repository;
+    @Autowired
+    public BoatController(BoatService service) {
+        this.service = service;
     }
 
     @GetMapping
-    public List<Boat> getAll() {
-        return repository.findAll();
+    public ResponseEntity<List<Boat>> getAll() {
+        // TODO: Implement pagination to prevent over-fetching.
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public Boat getById(@PathVariable Long id) {
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Boat not found"));
+    public ResponseEntity<Boat> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @PostMapping
     public ResponseEntity<Boat> create(@RequestBody Boat boat) {
-        Boat createdBoat = repository.save(boat);
+        // TODO: Implement validation for the Boat object.
+        Boat createdBoat = service.save(boat);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdBoat);
     }
 
     @PutMapping("/{id}")
-    public Boat update(@PathVariable Long id, @RequestBody Boat boat) {
-        return repository.findById(id)
-                .map(existingBoat -> {
-                    existingBoat.setName(boat.getName());
-                    existingBoat.setDescription(boat.getDescription());
-                    return repository.save(existingBoat);
-                })
-                .orElseThrow(() -> new ResourceNotFoundException("Boat not found"));
+    public ResponseEntity<Boat> update(@PathVariable Long id, @RequestBody Boat boat) {
+        // TODO: Handle the case where the Boat object is null.
+        return ResponseEntity.ok(service.update(id, boat));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("Boat not found");
-        }
-        repository.deleteById(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        // TODO: Handle the case where the id is null.
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
 
