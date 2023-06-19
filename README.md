@@ -17,7 +17,7 @@ This is the backend server for the Boat Application, a simple web application fo
 
 ### Testing
 
-- Download and import the [Postman collection file](OWT Demo.postman_collection.json) into your Postman and start sending requests.
+- Download and import the [Postman collection file](OWT_Demo.postman_collection.json) into your Postman and start sending requests.
 - Or check out the Test App via: https://boat-hero.azurewebsites.net/
 
 ## Authentication
